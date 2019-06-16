@@ -1,0 +1,58 @@
+<div     style="padding-right: 16%;">
+    <h1 style="text-align: center;">Grocery Store</h1>
+    <br />
+    <br />
+    <div class="row" >
+        <table class="table col-md-9 col-md-offset-3">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th class="qty">Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+            <tr class="animate-repeat">
+                <!-- <td>{{ item.product }}</td> -->
+                <td>
+                    <select ng-model="selectedProduct" ng-options="x for x in productName">
+                    </select>
+                </td>
+                <td>Rs. <input type="number" ng-model="productPrice" class="price"></td>
+                <td><input type="number" ng-model="productQty" class="qty"></td>
+                <td>Rs. {{ productPrice * productQty }}</td>
+                <td>
+                    <button class="btn-primary" ng-click="addItem(item)">Add to Cart</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <h2 style="padding-left: 45%">Your Cart:</h2>
+        <table class="table col-md-9 col-md-offset-3">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th class="qty">Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+            <tr class="animate-repeat" ng-repeat="item in cart">
+                <!-- <td>{{ item.product }}</td> -->
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.quantity}}</td>
+                <td>Rs. {{ item.total_price }}</td>
+                <td>
+                    <button class="btn-danger" ng-click="removeItem(item)">Remove</button>
+                </td>
+            </tr>
+        </table>
+
+
+<div class="column" style="padding-left: 45%">
+        <h3  >Total: Rs. {{ getTotal() }}</h3>
+        
+        <button class="btn-danger" ng-click="clearCart();">Clear Cart</button>
+        <button class="btn-primary" ng-click="checkout();">Checkout</button>
+    </div>
+    </div>
+</div>

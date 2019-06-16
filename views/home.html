@@ -1,0 +1,19 @@
+  <div id="add_note">
+    <md-icon ng-click="addItem($event)" class="material-icons" style="font-size:50px">note_add</md-icon>
+  </div>
+  <div>
+      <md-card ng-repeat="i in items" md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{i.name}}</span>
+              <span class="md-subhead">{{i.description}}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-sm card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="delete(i.name)">Delete</md-button>
+          </md-card-actions>
+        </md-card>
+  </div>
