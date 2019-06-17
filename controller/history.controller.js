@@ -11,7 +11,6 @@
             function errorCallback(response) {
               console.log("POST-ing of data failed");
               console.log(response.data.sucess)
-              $scope.loginError=true;
             }
           );
         

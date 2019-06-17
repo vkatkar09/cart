@@ -23,7 +23,7 @@
       return item.quantity * item.price;
     };
 
-    $scope.addItem = function (itemToAdd) {
+    $scope.addItem = function () {
       var item = { "name": $scope.selectedProduct, "quantity": $scope.productQty, "price": $scope.productPrice, "total_price": $scope.productQty * $scope.productPrice }
       $scope.cart.push(item);
 
@@ -65,14 +65,10 @@
           }
         );
       }, function () {
-        $scope.status = 'You decided to keep your debt.';
+        
       });
     };
 
-    saveData = function(data){
-      console.log(data);
-     
-    }
 
     $scope.removeItem = function (item) {
       var index = $scope.cart.indexOf(item);
