@@ -45,7 +45,7 @@
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
         .title(' Would you like to add this?')
-        .textContent('This gets saved locally!.')
+        .textContent('This gets saved!.')
         .ariaLabel('Lucky day')
         .targetEvent(ev)
         .ok('Please do it!')
