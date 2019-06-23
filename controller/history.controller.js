@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module("myApp");
 
-    var historyFunction = function($scope, $window, $http) {
-        $http.get("http://127.0.0.1:3030/api/releases/save").then(
+    var historyFunction = function($scope, groceryService) {
+        groceryService.getHistory().then(
             function successCallback(response) {
               console.log("Successfully GOT data");
               console.log(response.data);

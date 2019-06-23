@@ -1,7 +1,7 @@
 (function () {
   var app = angular.module("myApp");
 
-  var cartFunction = function ($scope, $window, $http, $mdDialog) {
+  var cartFunction = function ($scope, groceryService, $mdDialog) {
     $scope.productName = ['Salt', 'Sugar', 'Rice', 'Milk', 'Butter']
     $scope.selectedProduct = "Salt";
     $scope.productQty = 0;
@@ -53,7 +53,8 @@
 
       $mdDialog.show(confirm).then(function () {
         //var data =  {$scope.history.length+'': $scope.cart}
-        $http.post("http://127.0.0.1:3030/api/releases/save", $scope.cart).then(
+
+        groceryService.addHistory($scope.cart).then(
           function successCallback(response) {
             console.log("Successfully POST-ed data");
             $scope.clearCart()

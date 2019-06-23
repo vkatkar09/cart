@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module("myApp");
 
-    var registrationFunction = function($scope, $window, $http) {
+    var registrationFunction = function($scope, $window, groceryService) {
         $scope.regError=false;
         
         $scope.register = function(){
@@ -29,12 +29,12 @@
             }
 
             
-            $http.post("http://127.0.0.1:3030/api/releases/register", data).then(
-                function successCallback(response) {
+            groceryService.register(data).then(
+                function (response) {
                   console.log("Successfully POST-ed data");
                   $window.location.href = '/#!/login';
                 },
-                function errorCallback(response) {
+                function (response) {
                   console.log("POST-ing of data failed");
                   $scope.regError=true;
                 }

@@ -1,17 +1,20 @@
 (function() {
     var app = angular.module("myApp");
 
-    var homeFunction = function($scope, $mdDialog, $http) {
+    var homeFunction = function($scope, $mdDialog, groceryService, $http) {
       $scope.items=[];
-      $http.get("http://127.0.0.1:3030/api/releases/notes").then(
-      function successCallback(response) {
-        $scope.response = response;
-        $scope.items = response.data;
-      },
-      function errorCallback(response) {
-        console.log("Unable to perform get request");
-      }
-    );
+     var getNotes = function(){
+      groceryService.getNotes().then(
+        function successCallback(response) {
+          $scope.response = response;
+          $scope.items = response.data;
+        },
+        function errorCallback(response) {
+          console.log("Unable to perform get request");
+        }
+      );
+     } 
+    getNotes();
 
       $scope.delete = function(name){
         // var arrayLength = $scope.items.length;
@@ -24,19 +27,11 @@
         data={
           "name" : name
         }
-        $http.post("http://127.0.0.1:3030/api/releases/remove", data).then(
+        groceryService.deleteNotes(data).then(
                 function successCallback(response) {
                   console.log("Successfully POST-ed data");
                   //$window.location.href = '/#!/login';
-                  $http.get("http://127.0.0.1:3030/api/releases/notes").then(
-                    function successCallback(response) {
-                      $scope.response = response;
-                      $scope.items = response.data;
-                    },
-                    function errorCallback(response) {
-                      console.log("Unable to perform get request");
-                    }
-                  );
+                  getNotes();
                 },
                 function errorCallback(response) {
                   console.log("POST-ing of data failed");
@@ -60,19 +55,12 @@
                  temp = {"name": result, "description": "description for " + result}
                 // $scope.items.push(temp);
 
-                $http.post("http://127.0.0.1:3030/api/releases/notes", temp).then(
+                groceryService.postNotes(temp).then(
                 function successCallback(response) {
                   console.log("Successfully POST-ed data");
                   
-                $http.get("http://127.0.0.1:3030/api/releases/notes").then(
-                  function successCallback(response) {
-                    $scope.response = response;
-                    $scope.items = response.data;
-                  },
-                  function errorCallback(response) {
-                    console.log("Unable to perform get request");
-                  }
-                );
+                getNotes();
+                
                 },
                 function errorCallback(response) {
                   console.log("POST-ing of data failed");
