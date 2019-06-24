@@ -5,7 +5,6 @@
         groceryService.getHistory().then(
             function successCallback(response) {
               console.log("Successfully GOT data");
-              console.log(response.data);
              $scope.history = response.data
             },
             function errorCallback(response) {

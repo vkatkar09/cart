@@ -1,0 +1,17 @@
+<table class="table col-md-9 col-md-offset-3" style="width:100%">
+        <tr>
+            <th>Checkout {{index+1}}</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th class="qty">Qty</th>
+            <th>Total</th>
+            
+        </tr>
+        <tr class="animate-repeat" ng-repeat="product in products">
+            <td></td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.quantity}}</td>
+            <td>Rs. {{ product.total_price }}</td>
+        </tr>
+    </table>

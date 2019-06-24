@@ -2,7 +2,7 @@
   var app = angular.module("myApp");
 
   var cartFunction = function ($scope, groceryService, $mdDialog) {
-    $scope.productName = ['Salt', 'Sugar', 'Rice', 'Milk', 'Butter']
+    $scope.productName = ['Salt', 'Sugar', 'Rice', 'Milk', 'Butter', 'Gold']
     $scope.selectedProduct = "Salt";
     $scope.productQty = 0;
     $scope.productPrice = 0;
